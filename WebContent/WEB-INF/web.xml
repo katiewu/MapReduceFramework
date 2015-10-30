@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app 
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+ <web-app>
+   <display-name>MapReduce</display-name>
+   <context-param>
+     <param-name>BDBstore</param-name>
+     <param-value>database</param-value>
+   </context-param>
+    
+   <servlet>
+     <servlet-name>master</servlet-name>
+     <servlet-class>edu.upenn.cis455.mapreduce.master.MasterServlet</servlet-class> 
+   </servlet>
+   
+   <servlet>
+   	 <servlet-name>worker</servlet-name>
+   	 <servlet-class>edu.upenn.cis455.mapreduce.worker.WorkerServlet</servlet-class>
+   	 <init-param>
+        <param-name>master</param-name>
+        <param-value>127.0.0.1:8080</param-value>
+     </init-param>
+     <init-param>
+     	<param-name>port</param-name>
+     	<param-value>8080</param-value>
+     </init-param>
+     <init-param>
+     	<param-name>storageDir</param-name>
+     	<param-value>/home/cis455/store/</param-value>
+     </init-param>
+     <load-on-startup>0</load-on-startup>
+   </servlet>
+   
+    
+   <servlet-mapping>
+     <servlet-name>master</servlet-name>
+     <url-pattern>/master/*</url-pattern>
+   </servlet-mapping> 
+
+   
+   <servlet-mapping>
+     <servlet-name>worker</servlet-name>
+     <url-pattern>/worker</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+   	 <servlet-name>worker</servlet-name>
+   	 <url-pattern>/pushdata</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+   	 <servlet-name>worker</servlet-name>
+   	 <url-pattern>/runmap</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+     <servlet-name>worker</servlet-name>
+     <url-pattern>/runreduce</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+     <servlet-name>worker</servlet-name>
+     <url-pattern>/steal</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+     <servlet-name>worker</servlet-name>
+     <url-pattern>/stealreduce</url-pattern>
+   </servlet-mapping>
+   
+   <!-- add any additional servlets and servlet mappings here -->
+
+</web-app>
