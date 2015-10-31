@@ -1,12 +1,15 @@
 # Map-Reduce Framework
 
->This is a simplified MapReduce framework implemented in Java. 
+This is a simplified MapReduce framework implemented in Java. 
 
 The framework consists of two types of nodes:
   - One master
+    - The master node assigns tasks to workers and coordinates among the workers. 
+    - The master also has a status page which displays the list of workers that are currently online and some information about each.
   - Multiple workers
+    - The workers are in charge of running map and reduce functions, and of storing the data.
   
-> The master node assigns tasks to workers and coordinates among the workers; the workers are in charge of running map and reduce functions, and of storing the data. The master has a status page which displays the list of workers that are currently online and some information about each. My MapReduce framework also supports load balancing to avoid that some of the workers have already finished tasks but others are still busy.
+My MapReduce framework also supports workload balancing to better utilize computing resources.
 
 ## Instructions:
 - [ ] The master and workers are implemented as Java Servlets. Load master servlet and worker servlets into different servlet containers (eg. Tomcat) on different machines.
