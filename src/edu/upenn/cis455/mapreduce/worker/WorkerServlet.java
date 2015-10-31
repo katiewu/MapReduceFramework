@@ -277,7 +277,7 @@ public class WorkerServlet extends HttpServlet {
 		Client client = new Client(url);
 		InputStream inputStream = client.executePost("");
 		BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
-	    String line;
+	    	String line;
 		try {
 			line = in.readLine();
 			System.out.println("send steal "+line);
@@ -329,7 +329,7 @@ public class WorkerServlet extends HttpServlet {
 		String newstorepath = storageDir+"spool-in/";
 		// use current time to assign name
 		Calendar cal = Calendar.getInstance();
-    	long currenttime = cal.getTime().getTime();
+    		long currenttime = cal.getTime().getTime();
    		newstorepath = newstorepath+currenttime+".txt";
    		System.out.println("worker "+index+" move data, original path: "+storepath+", new path: "+newstorepath);
 		File file =new File(storepath);
@@ -344,7 +344,7 @@ public class WorkerServlet extends HttpServlet {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(body));
 			String line;
 			Calendar cal = Calendar.getInstance();
-	    	long currenttime = cal.getTime().getTime();
+	    		long currenttime = cal.getTime().getTime();
 			String storepath = storageDir+"spool-in/"+currenttime+".txt";
 			System.out.println("push data file "+storepath);
 			File file = new File(storepath);
@@ -353,7 +353,7 @@ public class WorkerServlet extends HttpServlet {
 			PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(storepath, true)));
 			while ((line = reader.readLine()) != null) {
 				out.println(line);
-	        }
+	        	}
 			out.close();
 			status.plusSpoolIn();
 		} catch (IOException e) {
