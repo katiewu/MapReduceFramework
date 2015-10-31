@@ -10,10 +10,10 @@ public class WordCount implements Job {
 	public void map(String key, String value, Context context) {
 		StringTokenizer tokenizer = new StringTokenizer(value);
 		String word = "";
-        while (tokenizer.hasMoreTokens()) {
-            word = tokenizer.nextToken();
-            context.write(word, "1");
-        }
+	        while (tokenizer.hasMoreTokens()) {
+	            word = tokenizer.nextToken();
+	            context.write(word, "1");
+	        }
 	}
 
 	public void reduce(String key, String[] values, Context context) {
