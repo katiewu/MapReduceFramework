@@ -152,13 +152,8 @@ public class MasterServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws java.io.IOException {
-		System.out.println(request.getPathInfo());
-		System.out.println(request.getServletPath());
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getRequestURL());
 		String url = request.getRequestURI();
 		if (url.endsWith("workerstatus")) {
-//			System.out.println("accept workerstatus request");
 			String ip = request.getRemoteAddr();
 			int port = Integer.parseInt(request.getParameter("port"));
 			String status = request.getParameter("status");
